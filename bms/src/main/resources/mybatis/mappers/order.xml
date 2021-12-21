@@ -16,9 +16,9 @@
 	</select>
 	
 	<insert id="insertNewOrder" parameterType="OrderDto">
-	    <selectKey resultType="int" keyProperty="orderId" order="BEFORE">
-	    	SELECT 
-	    			SEQ_ORDER_ID.NEXTVAL 
+	    <selectKey resultType="int" keyProperty="orderId" order="BEFORE">		<!-- selectKey, order="BEFORE" : 처리되기 전의 값을 가져온다 -->
+	    	SELECT  
+	    			SEQ_ORDER_ID.NEXTVAL <!-- NEXTVAL: 해당 시퀸스의 값을 증가시키고 싶을 때 사용 -->
 	    	FROM 
 	    			DUAL
 	    </selectKey>

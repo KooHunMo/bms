@@ -25,8 +25,8 @@ public class GoodsController {
 		Map<String,Object> goodsMap = goodsService.goodsDetail(goodsId);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/goods/goodsDetail");
-		mv.addObject("goodsMap", goodsMap);
+		mv.setViewName("/goods/goodsDetail");		// mv.setViewName: 페이지 이동값 세팅
+		mv.addObject("goodsMap", goodsMap); 		// mv.addObject: 데이터 추가
 		
 		return mv;
 		

@@ -11,3 +11,4 @@ public interface MemberDao {
 	public String selectOverlappedID(String id) throws Exception;
 
 }
+

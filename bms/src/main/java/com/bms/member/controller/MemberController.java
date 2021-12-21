@@ -41,7 +41,7 @@ public class MemberController {
 		
 		if (memberDto != null && memberDto.getDelYn().equals("N")) { 	
 			HttpSession session = request.getSession();		
-			session.setAttribute("isLogOn" , true);			
+			session.setAttribute("isLogOn" , true);				//?? isLogOn을 어디서 쓰는지? view인가?		
 			session.setAttribute("memberInfo" , memberDto);		
 			session.setMaxInactiveInterval(60 * 30);
 			mv.setViewName("redirect:/main/main.do");	
@@ -64,7 +64,7 @@ public class MemberController {
 		session.setAttribute("isLogOn", false);
 		session.removeAttribute("memberInfo");
 		
-		mv.setViewName("redirect:/main/main.do");
+		mv.setViewName("redirect:/main/main.do");		// redirect 중요!
 		
 		return mv;
 	
@@ -84,9 +84,9 @@ public class MemberController {
 		
 		String message  = "<script>";
 			   message += " alert('회원가입되었습니다.');";
-			   message += " location.href='" + request.getContextPath() + "/member/loginForm.do';";
-			   message += " </script>";
-	    
+			   message += " location.href='" + request.getContextPath() + "/member/loginForm.do';";		// 회원가입 됐는데 왜 다시 
+			   message += " </script>";																    // loginForm으로 돌아갈까?
+			   																						 	// 아마 loginForm에서 다른곳으로 보내줄듯
 	    HttpHeaders responseHeaders = new HttpHeaders();
 	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		

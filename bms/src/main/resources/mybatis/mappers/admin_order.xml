@@ -8,9 +8,9 @@
    		  FROM 
    		  			T_SHOPPING_ORDER 
          <where>
-          			TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
-	                <if test='searchType == "all"'>
-	                  AND (ORDERER_NAME 	like '%'|| #{searchWord} || '%'
+          			TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate} <!-- dual은 임시테이블이다 내장함수, -->
+	                  AND (ORDERER_NAME 	like '%'|| #{searchWord} || '%'					 <!-- 계산식 출력, 임시데이터 확인에 사용-->
+	                <if test='searchType == "all"'> -->
 	                   OR GOODS_TITLE 	like '%'|| #{searchWord} || '%')
 	                </if>
 	                <if test='searchType == "ordererName"'>
@@ -25,7 +25,7 @@
 	</select>
 	
 	
-	<update id="updateDeliveryState" parameterType="java.util.Map" >
+	<update id="updateDeliveryState" parameterType="java.util.Map" >	<!-- sql문에서는 2개 이상의 매개변수를 받을 경우 map을 써야한다 -->
 	   UPDATE T_SHOPPING_ORDER
 	    <set> 
 	      <if test='deliveryState != null and deliveryState != "" '>

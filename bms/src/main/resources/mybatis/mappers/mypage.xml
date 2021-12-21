@@ -168,7 +168,7 @@
 				MEMBER_ID = #{memberId}
 	</update>
 	
-	<select id="selectMyDetailInfo" resultType="MemberDto"   parameterType="String"  >
+	<select id="selectMyDetailInfo" resultType="MemberDto"   parameterType="String"  >		<!-- 내 정보 가져오기 -->
 		SELECT 
 				* 
 		FROM 
@@ -177,7 +177,7 @@
 				MEMBER_ID = #{memberId}
 	</select>	
 	
-	<update id="updateMyOrderCancel" parameterType="String">
+	<update id="updateMyOrderCancel" parameterType="String">		<!-- 주문취소 -->
 	   UPDATE 
 	   	   		T_SHOPPING_ORDER
 	   SET 
