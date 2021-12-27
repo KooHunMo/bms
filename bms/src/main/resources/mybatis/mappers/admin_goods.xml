@@ -80,8 +80,8 @@
 	    VALUES (
 			#{imageId},
 		 	#{goodsId},
-			#{fileName},
-			#{fileType}
+			#{fileName, jdbcType=VARCHAR},
+			#{fileType, jdbcType=VARCHAR}
 		)
 	</insert> 
 	

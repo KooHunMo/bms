@@ -39,6 +39,219 @@
 		 });	
 		
 	});
+	
+	$().ready(function(){
+		
+			$("#submit").click(function(){
+			
+				var memberId = $("#memberId").val();
+			
+				if(memberId == ''){
+					alert("아이디를 입력하세요.");
+					return false;
+				}
+			
+			});
+		
+		});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+			
+			var memberPw = $("#memberPw").val();
+			
+			if(memberPw == ''){
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+			
+		});
+		
+	});
+	
+	$().ready(function(){
+		
+			$("#submit").click(function(){
+			
+				var memberPwCheck = $("#memberPwCheck").val();
+			
+				if(memberPwCheck == ''){
+					alert("비밀번호 확인을 입력하세요.");
+					return false;
+				}
+			
+			});
+		
+		});
+	
+	$().ready(function(){
+	
+		$("#submit").click(function(){
+		
+			var memberName = $("#memberName").val();
+		
+			if(memberName == ''){
+				alert("이름을 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+
+	$().ready(function(){
+	
+		$("#submit").click(function(){
+		
+			var tel2 = $("#tel2").val();
+		
+			if(tel2 == ''){
+				alert("집 전화번호를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var tel3 = $("#tel3").val();
+		
+			if(tel3 == ''){
+				alert("집 전화번호를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var hp2 = $("#hp2").val();
+		
+			if(hp2 == ''){
+				alert("핸드폰 번호를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var hp3 = $("#hp3").val();
+		
+			if(hp3 == ''){
+				alert("핸드폰 번호를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+			$("#submit").click(function(){
+		
+				var email2 = $("#email2").val();
+		
+				if(email2 == ''){
+					alert("이메일을 입력하세요.");
+					return false;
+				}
+		
+			});
+		
+		});
+	
+	$().ready(function(){
+	
+		$("#submit").click(function(){
+	
+			var email3 = $("#email3").val();
+	
+			if(email3 == ''){
+				alert("이메일을 입력하세요.");
+				return false;
+			}
+	
+		});
+
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var zipcode = $("#zipcode").val();
+		
+			if(zipcode == ''){
+				alert("우편번호를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var roadAddress = $("#roadAddress").val();
+		
+			if(roadAddress == ''){
+				alert("도로명 주소를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+		
+		$("#submit").click(function(){
+		
+			var jibunAddress = $("#jibunAddress").val();
+		
+			if(jibunAddress == ''){
+				alert("지번 주소를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	$().ready(function(){
+	
+		$("#submit").click(function(){
+		
+			var namujiAddress = $("#namujiAddress").val();
+		
+			if(namujiAddress == ''){
+				alert("나머지 주소를 입력하세요.");
+				return false;
+			}
+		
+		});
+	
+	});
+	
+	
+	
 </script>
 <style>
 	td:first-child {
@@ -48,7 +261,7 @@
 </style>
 </head>
 <body>
-	<form action="${contextPath}/member/addMember.do" method="post">
+	<form name="f" action="${contextPath}/member/addMember.do" method="post">
 	<h3>회원가입</h3>
 	<table class="table table-bordered table-hover">
 		<colgroup>
@@ -61,7 +274,8 @@
 			</td>
 			<td>
 	            <input type="text" class="form-control" style="display:inline; width:300px;" 
-	            	name="memberId"  id="memberId" maxlength="15" placeholder="아이디를 입력하세요." />&emsp;
+	            	name="memberId"  id="memberId" pattern=".{5,10}" required title="5~10자 사이의 글자를 입력해 주세요" placeholder="아이디를 입력하세요." />&emsp;
+	            	
 	            <input type="button" id="btnOverlapped" class="btn btn-outline-primary btn-sm" value="중복확인" />
 	        </td>
 	    </tr>
@@ -70,7 +284,7 @@
 	        	 <label class="small mb-1" for="memberPw">비밀번호</label>
 	        </td>
 	        <td>
-	        	<input class="form-control" id="memberPw" name="memberPw" type="password" placeholder="비밀번호를 입력하세요." />
+	        	<input class="form-control" id="memberPw" name="memberPw" type="password" pattern=".{5,10}" required title="5~10자 사이의 글자를 입력해 주세요" placeholder="비밀번호를 입력하세요." />
 	        </td>
         </tr>
         <tr>
@@ -78,7 +292,7 @@
 	        	 <label class="small mb-1">비밀번호 확인</label>
 	        </td>
 	        <td>
-	        	<input class="form-control" type="password" placeholder="비밀번호를 입력하세요." />
+	        	<input class="form-control" id="memberPwCheck" type="password" pattern=".{5,10}" required title="5~10자 사이의 글자를 입력해 주세요" placeholder="비밀번호를 입력하세요." />
 	        </td>
         </tr>         
         <tr>
@@ -233,7 +447,7 @@
         </tr>                              
         <tr>
 	        <td colspan="2">
-	        	<input type="submit" value="회원가입하기" class="btn btn-primary btn-block" >
+	        	<input type="submit" id=submit value="회원가입하기" class="btn btn-primary btn-block" >
 	        </td>
 	    </tr>
 	    <tr>

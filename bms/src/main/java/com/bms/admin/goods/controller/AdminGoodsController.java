@@ -117,9 +117,12 @@ public class AdminGoodsController {
 	@RequestMapping(value="/addNewGoods.do" , method = RequestMethod.POST)
 	public ResponseEntity<String> addNewGoods(MultipartHttpServletRequest multipartRequest , HttpServletResponse response) throws Exception {
 		
+		
+		
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
-
+	
+		
 		Map<String,Object> newGoodsMap = new HashMap<String,Object>(); 
 		
 		Enumeration<?> multi = multipartRequest.getParameterNames();	
@@ -132,7 +135,7 @@ public class AdminGoodsController {
 		List<ImageFileDto> imageFileList = fileController.upload(multipartRequest);
 		newGoodsMap.put("imageFileList", imageFileList); 
 		
-		int goodsId = adminGoodsService.addNewGoods(newGoodsMap);
+		int goodsId = adminGoodsService.addNewGoods(newGoodsMap); // error 발생
 		
 		if (imageFileList != null && imageFileList.size() != 0) { 
 			for (ImageFileDto  imageFileDto : imageFileList) {    
@@ -226,10 +229,14 @@ public class AdminGoodsController {
 
 	@RequestMapping(value="/addNewGoodsImage.do" , method = RequestMethod.POST)
 	public void addNewGoodsImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
-	
+		
+		System.out.println("11");
+		
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String imageFileName = "";
+		
+		System.out.println("22");
 		
 		Map<String,String> goodsMap = new HashMap<String, String>();
 		
@@ -240,7 +247,7 @@ public class AdminGoodsController {
 			goodsMap.put(name,value);
 		}
 		
-		
+		System.out.println("33");
 		List<ImageFileDto> imageFileList = null;
 		int goodsId = 0;
 		try {
@@ -273,7 +280,7 @@ public class AdminGoodsController {
 		adminGoodsService.removeGoodsImage(imageId);
 		
 		File srcFile = new File(CURR_IMAGE_REPO_PATH + seperatorPath + goodsId + seperatorPath + imageFileName);
-		srcFile.delete();
+		srcFile.delete(); // delete는 fileClass안에 있는 메서드
 		return new ResponseEntity<Object>(HttpStatus.OK);
 		
 	}

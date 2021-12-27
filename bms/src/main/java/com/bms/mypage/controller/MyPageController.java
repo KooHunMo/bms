@@ -38,14 +38,14 @@ public class MyPageController  {
 	
 	@RequestMapping(value="/myPageMain.do" , method = RequestMethod.GET)
 	public ModelAndView myPageMain(@RequestParam(required = false , value="message") String message, HttpServletRequest request)  throws Exception {
-		
+												//required 속성을 추가하면 해당 필드가 리퀘스트에 존재하지 않아도 예외가 발생하지 않는다.
 		HttpSession session = request.getSession();
 		
 		session = request.getSession();
-		session.setAttribute("sideMenu", "myPage");
+		session.setAttribute("sideMenu", "myPage");		//"sideMenu"에 "myPage" 저장
 		
-		ModelAndView mv = new ModelAndView("/mypage/myPageMain");
-		MemberDto memberDto = (MemberDto)session.getAttribute("memberInfo");
+		ModelAndView mv = new ModelAndView("/mypage/myPageMain");	//사용 변수가 "/mypage/myPageMain"인건가??????
+		MemberDto memberDto = (MemberDto)session.getAttribute("memberInfo");	//세션 반환형: Object
 		
 		String memberId = "";
 		if (memberDto != null) 	memberId = memberDto.getMemberId();
@@ -107,7 +107,7 @@ public class MyPageController  {
 		mv.addObject("endYear"    , endDate1[0]);
 		mv.addObject("endMonth"   , endDate1[1]);
 		mv.addObject("endDay"     , endDate1[2]);
-		mv.addObject("myOrderHistList" , myOrderHistList);
+		mv.addObject("myOrderHistList" , myOrderHistList);	//???
 		
 		return mv;
 		

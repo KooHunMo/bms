@@ -20,7 +20,6 @@ public class OrderDaoImpl implements OrderDao {
 	}
 	
 	public void insertNewOrder(OrderDto orderDto) throws Exception{
-		System.out.println(orderDto);
 		sqlSession.insert("mapper.order.insertNewOrder" , orderDto);
 	}	
 	

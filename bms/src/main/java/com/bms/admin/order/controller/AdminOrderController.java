@@ -47,7 +47,7 @@ public class AdminOrderController {
 	
 	@RequestMapping(value="/adminOrderMain.do")
 	public ModelAndView adminOrderMain(@RequestParam Map<String, String> dateMap , HttpServletRequest request) throws Exception {
-		
+																		 // 변수명
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/admin/order/adminOrderMain");
 

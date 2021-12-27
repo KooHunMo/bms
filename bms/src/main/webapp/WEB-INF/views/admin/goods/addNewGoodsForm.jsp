@@ -8,28 +8,106 @@
 
 	var cnt = 0;
 	
+	
 	function fn_addFile(){
 		
 		if (cnt == 0) $("#target_add_file").append("<br>"+"<input  type='file' name='main_image' id='f_main_image' />");	  
 		else 		  $("#target_add_file").append("<br>"+"<input  type='file' name='detail_image" + cnt + "' />");
 		cnt++;
 		
+	}	
+
+	function fn_add_new_goods(){ 
+		
+		var goodsTitle = $("#goodsTitle").val();	
+		var goodsWriter = $("#goodsWriter").val();
+		var goodsPublisher = $("#goodsPublisher").val();
+		var goodsPrice = $("#goodsPrice").val();
+		var goodsSalesPrice = $("#goodsSalesPrice").val();
+		var goodsPoint = $("#goodsPoint").val();
+		var goodsPublishedDate = $("#goodsPublishedDate").val();
+		var goodsIsbn = $("#goodsIsbn").val();
+		var goodsTotalPage = $("#goodsTotalPage").val();
+		var goodsDeliveryPrice = $("#goodsDeliveryPrice").val();
+		var goodsDeliveryDate = $("#goodsDeliveryDate").val();	
+				
+				if(goodsTitle == ''){
+					alert("상품 이름을 입력하세요.");
+					return;
+				}
+			
+				if(goodsWriter == ''){
+					alert("저자를 입력하세요.");
+					return;
+				}
+
+				if(goodsPublisher == ''){
+					alert("출판사를 입력하세요.");
+					return;
+				}
+        			
+				if(goodsPrice == ''){
+					alert("상품 정가를 입력하세요.");
+					return;
+				}else if(isNaN(goodsPrice) == true){
+					alert("정수를 입력하세요");
+					return;
+				}
+						
+				if(goodsSalesPrice == ''){
+					alert("상품 판매가격를 입력하세요.");
+					return;
+				}else if(isNaN(goodsPrice) == true){
+					alert("정수를 입력하세요");
+					return;
+				}
+				
+				if(goodsPoint == ''){
+					alert("상품 구매 포인트를 입력하세요.");
+					return;
+				}else if(isNaN(goodsPrice) == true){
+					alert("정수를 입력하세요");
+					return;
+				}
+				
+				if(goodsPublishedDate == ''){
+					alert("상품 출판일을 입력하세요.");
+					return;
+				}
+			
+				if(goodsTotalPage == ''){
+					alert("상품 총 페이지수를 입력하세요.");
+					return;
+				}else if(isNaN(goodsPrice) == true){
+					alert("정수를 입력하세요");
+					return;
+				}
+				
+				if(goodsIsbn == ''){
+					alert("ISBN를 입력하세요.");
+					return;
+				}
+
+				
+				if(goodsDeliveryPrice == ''){
+					alert("상품 배송비를 입력하세요.");
+					return;
+				}
+
+
+				if(goodsDeliveryDate == ''){
+					alert("상품 도착 예정일을 입력하세요.");
+					return;
+				}
+			
+				if(cnt == 0){
+					alert("메인 이미지는 반드시 첨부해야 합니다.");
+					return;
+				}else {
+					document.adminGoods.submit();
+				}
 	}
-  
-  
-	function fn_add_new_goods(obj){
-		 
-		fileName = $('#f_main_image').val();
-		 
-		if (fileName != null && fileName != undefined){
-			 obj.submit();
-		}
-		else {
-			 alert("메인 이미지는 반드시 첨부해야 합니다.");
-			 return;
-		 }
-		 
-	}
+			
 </script>
 <style>
 	td:first-child {
@@ -39,7 +117,7 @@
 </style>
 </head>
 <body>
-	<form action="${contextPath}/admin/goods/addNewGoods.do" method="post"  enctype="multipart/form-data">
+	<form action="${contextPath}/admin/goods/addNewGoods.do" name="adminGoods" method="post"  enctype="multipart/form-data">
 		<h1>새상품 등록창</h1>
 		<div class="tab_container">
 		<div class="tab_container" id="container">
@@ -76,47 +154,47 @@
 						 </tr>
 						<tr>
 							<td>제품 이름</td>
-							<td><input name="goodsTitle" type="text" class="form-control"/></td>
+							<td><input name="goodsTitle" id="goodsTitle" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td >저자</td>
-							<td><input name="goodsWriter" type="text" class="form-control"/></td>
+							<td><input name="goodsWriter" id="goodsWriter" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>출판사</td>
-							<td><input name="goodsPublisher" type="text" class="form-control"/></td>
+							<td><input name="goodsPublisher" id="goodsPublisher" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 정가</td>
-							<td><input name="goodsPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsPrice" id="goodsPrice" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 판매가격</td>
-							<td><input name="goodsSalesPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsSalesPrice" id="goodsSalesPrice" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 구매 포인트</td>
-							<td><input name="goodsPoint" type="text" class="form-control"/></td>
+							<td><input name="goodsPoint" id="goodsPoint" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품출판일</td>
-							<td><input  name="goodsPublishedDate" type="date" class="form-control"/></td>
+							<td><input name="goodsPublishedDate" id="goodsPublishedDate" type="date" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 총 페이지수</td>
-							<td><input name="goodsTotalPage" type="text" class="form-control"/></td>
+							<td><input name="goodsTotalPage" id="goodsTotalPage" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>ISBN</td>
-							<td><input name="goodsIsbn" type="text" class="form-control"/></td>
+							<td><input name="goodsIsbn" id="goodsIsbn" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 배송비</td>
-							<td><input name="goodsDeliveryPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsDeliveryPrice" id="" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 도착 예정일</td>
-							<td><input name="goodsDeliveryDate" type="date" class="form-control"/></td>
+							<td><input name="goodsDeliveryDate"  id="goodsDeliveryDate"type="date" class="form-control"/></td>
 						</tr>
 					</table>	
 				</div>
@@ -170,7 +248,7 @@
 				</div>
 			</div>
 			<p align="right">
-				  <input type="button" value="등록하기" class="btn btn-outline-primary btn-sm" onClick="fn_add_new_goods(this.form)">
+				  <input type="button" id="submit1" name="submit1" value="등록하기" class="btn btn-outline-primary btn-sm" onClick="fn_add_new_goods()"> 
 			</p>
 			</div>
 		</div>
