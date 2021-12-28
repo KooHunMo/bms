@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -138,7 +139,7 @@ public class AdminGoodsController {
 		List<ImageFileDto> imageFileList = fileController.upload(multipartRequest);
 		newGoodsMap.put("imageFileList", imageFileList); 
 		
-		int goodsId = adminGoodsService.addNewGoods(newGoodsMap); // error 발생
+		int goodsId = adminGoodsService.addNewGoods(newGoodsMap);
 		
 		if (imageFileList != null && imageFileList.size() != 0) { 
 			for (ImageFileDto  imageFileDto : imageFileList) {    
@@ -283,24 +284,27 @@ public class AdminGoodsController {
 		
 	}
 	
+	
 	@RequestMapping(value="deleteGoodsInfo.do")
 		   //String으로 받아도 됨 ajax가 항상 ResponseEntity를 써야하는 것은 아님
 	public ResponseEntity<Object> deleteGoodsInfo( HttpServletRequest request ,	
-			@RequestParam("goodsId") int goodsId, @RequestParam("imageId") int imageId) throws Exception {
+												   @RequestParam("goodsId") int goodsId, 
+												   @RequestParam("imageId") int imageId) 
+												   throws Exception {
 												
 		adminGoodsService.removeGoodsImage(imageId);
 		adminGoodsService.deleteGoodsInfo(goodsId);
 		
-			String message = "";
-			message = "<script>";
-			message += "alert('상품을 삭제했습니다.');";
-			message += "location.href='"+ request.getContextPath() +"admin/goods/adminGoodsMain';"; // javascript의 ${pageContext.request.contextPath}의 역할과 같다.
-			message += "</script>";
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		
-			HttpHeaders responseHeader = new HttpHeaders();
-			responseHeader.add("Content-Type" , "text/html; charset=UTF-8");
-			
-		return new ResponseEntity<Object>(message, responseHeader , HttpStatus.OK);
+		String message= "<script>";
+			   message +=" alert('성공적으로 삭제되었습니다.');";
+			   message +=" location.href='" + request.getContextPath() + "/admin/goods/adminGoodsMain';";
+			   message +="</script>";
+		
+		return new ResponseEntity<Object>(message, responseHeaders, HttpStatus.OK);
+		 // return message;
 		// ResponseEntity, location.href을 사용하지 않고 redirect: 를 사용해도 됨 
 	}
 

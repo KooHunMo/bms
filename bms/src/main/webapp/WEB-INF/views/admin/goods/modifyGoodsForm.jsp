@@ -150,10 +150,6 @@
 	 
 	 function deleteGoodsInfo(goodsId){
 		 
-		 console.log("넘어옴");
-		 console.log(goodsId);
-		 console.log("img : " +$('#imageId').val());
-		 
 	     	$.ajax({
 		   		type : "post",
 		   		url : "${contextPath}/admin/goods/deleteGoodsInfo.do",
@@ -162,7 +158,8 @@
 		   			imageId : $('#imageId').val()
 		    	},
 		   		success : function(data) {
-		   			alert("성공");
+		   			history.go(-1);
+		   			alert("상품 삭제가 완료되었습니다.");
 		   		}
 		   	}); 
 		}
