@@ -11,7 +11,7 @@ import com.bms.goods.dto.GoodsDto;
 import com.bms.goods.dto.ImageFileDto;
 
 @Repository
-public class AdminGoodsDaoImpl  implements AdminGoodsDao{
+public class AdminGoodsDaoImpl implements AdminGoodsDao{
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -67,6 +67,10 @@ public class AdminGoodsDaoImpl  implements AdminGoodsDao{
 		
 	}
 
-	
+	@Override
+	public void deleteGoodsInfo(int goodsId) throws Exception {
+		sqlSession.delete("mapper.admin.goods.deleteGoodsInfo", goodsId);
+		
+	}
 
 }

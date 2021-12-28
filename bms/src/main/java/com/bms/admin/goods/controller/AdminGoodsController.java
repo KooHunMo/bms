@@ -28,6 +28,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -230,13 +233,9 @@ public class AdminGoodsController {
 	@RequestMapping(value="/addNewGoodsImage.do" , method = RequestMethod.POST)
 	public void addNewGoodsImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
 		
-		System.out.println("11");
-		
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String imageFileName = "";
-		
-		System.out.println("22");
 		
 		Map<String,String> goodsMap = new HashMap<String, String>();
 		
@@ -247,7 +246,6 @@ public class AdminGoodsController {
 			goodsMap.put(name,value);
 		}
 		
-		System.out.println("33");
 		List<ImageFileDto> imageFileList = null;
 		int goodsId = 0;
 		try {
@@ -283,6 +281,27 @@ public class AdminGoodsController {
 		srcFile.delete(); // delete는 fileClass안에 있는 메서드
 		return new ResponseEntity<Object>(HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value="deleteGoodsInfo.do")
+		   //String으로 받아도 됨 ajax가 항상 ResponseEntity를 써야하는 것은 아님
+	public ResponseEntity<Object> deleteGoodsInfo( HttpServletRequest request ,	
+			@RequestParam("goodsId") int goodsId, @RequestParam("imageId") int imageId) throws Exception {
+												
+		adminGoodsService.removeGoodsImage(imageId);
+		adminGoodsService.deleteGoodsInfo(goodsId);
+		
+			String message = "";
+			message = "<script>";
+			message += "alert('상품을 삭제했습니다.');";
+			message += "location.href='"+ request.getContextPath() +"admin/goods/adminGoodsMain';"; // javascript의 ${pageContext.request.contextPath}의 역할과 같다.
+			message += "</script>";
+		
+			HttpHeaders responseHeader = new HttpHeaders();
+			responseHeader.add("Content-Type" , "text/html; charset=UTF-8");
+			
+		return new ResponseEntity<Object>(message, responseHeader , HttpStatus.OK);
+		// ResponseEntity, location.href을 사용하지 않고 redirect: 를 사용해도 됨 
 	}
 
 	@RequestMapping(value="/goodsExcelExport.do" , method=RequestMethod.GET)

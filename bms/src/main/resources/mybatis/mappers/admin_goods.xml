@@ -273,5 +273,12 @@
 	  WHERE 
 	  			IMAGE_ID = #{imageId}
 	</delete>
+	
+	<delete id="deleteGoodsInfo" parameterType="int">
+	DELETE FROM
+			T_SHOPPING_GOODS
+	WHERE 
+			GOODS_ID = #{goodsId}
+	</delete>
 		
 </mapper>

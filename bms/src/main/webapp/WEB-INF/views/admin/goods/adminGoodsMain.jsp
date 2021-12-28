@@ -309,7 +309,6 @@
 	</table>
 	<br>
 	<div align="right">
-		<input class="btn btn-danger btn-sm" type="button" value= "상품 삭제">
 		<input class="btn btn-primary btn-sm" type="button" onclick="location.href='${contextPath}/admin/goods/addNewGoodsForm.do'" value="상품 등록">
 	</div>
 </body>

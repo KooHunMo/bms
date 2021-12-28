@@ -147,6 +147,25 @@
 	   		}
 	   	}); 
 	}
+	 
+	 function deleteGoodsInfo(goodsId){
+		 
+		 console.log("넘어옴");
+		 console.log(goodsId);
+		 console.log("img : " +$('#imageId').val());
+		 
+	     	$.ajax({
+		   		type : "post",
+		   		url : "${contextPath}/admin/goods/deleteGoodsInfo.do",
+		   		data: {
+		   			goodsId : goodsId,
+		   			imageId : $('#imageId').val()
+		    	},
+		   		success : function(data) {
+		   			alert("성공");
+		   		}
+		   	}); 
+		}
 </script>
 <style>
 	td:first-child {
@@ -319,7 +338,7 @@
 									<td>메인 이미지</td>
 									<td><input type="file" id="main_image" name="main_image"
 										onchange="readURL(this,'preview${itemNum.count}');" /> 
-										<input type="hidden" name="imageId" value="${item.imageId}" /><br>
+										<input type="hidden" id="imageId" name="imageId" value="${item.imageId}" /><br>
 									</td>
 									<td><img id="preview${itemNum.count}" width=200 height=200 src="${contextPath}/download.do?goodsId=${item.goodsId}&fileName=${item.fileName}" />
 									</td>
@@ -335,7 +354,7 @@
 									<td>
 										<input type="file" name="detailImage" id="detailImage"
 										onchange="readURL(this,'preview${itemNum.count}');" />
-										<input type="hidden" name="imageId" value="${item.imageId }" />
+		<!--  -->								<input type="hidden" id="imageId" name="imageId" value="${item.imageId}" />
 										<br>
 									</td>
 									<td>
@@ -364,6 +383,9 @@
 				</table>
 			</form>
 		</div>
+	</div>
+	<div align="right">
+		<input class="btn btn-danger btn-sm" id=deleteButton name=deleteButton type="button" onclick="deleteGoodsInfo('${goods.goodsId}')" value="상품 삭제">
 	</div>
 </body>
 </html>
