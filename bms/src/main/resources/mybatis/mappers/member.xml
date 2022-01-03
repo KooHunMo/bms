@@ -49,7 +49,8 @@
 	                #{jibunAddress},
 	                #{namujiAddress},
 	                SYSDATE,
-	                'N'
+	                'N',
+	                #{point}
 	        )
 	   ]]>      
   </insert>
