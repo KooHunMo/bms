@@ -87,6 +87,7 @@
 		    cardComName     : $("#cardComName").val(),
 		    cardPayMonth    : $("#cardPayMonth").val(),
 		    payOrdererHpNum : payOrdererHpNum,
+		   // point 넣기
 		}
 		
 		$.ajax({
@@ -277,8 +278,39 @@
 	<div class="clear"></div>
 	<br>
 	<br>
-
-	<h1>3.결제정보</h1>
+	<div class="clear"></div>
+	<h1>3.포인트 사용</h1>
+	<div class="detail_table">
+		<table>
+			<tbody>
+				<tr class="dot_line" >
+					<td class="fixed_join">내 포인트</td>
+					<td><input type="text" id="myPoint" name="myPoint" value="${orderer.point }"  readonly /></td>
+					<td>
+					 <br>
+					</td>
+			    </tr>
+			    <tr class="dot_line" >
+					<td class="fixed_join">사용 할 포인트</td>
+					<td><input type="number" id="pointsUse" name="pointsUse" value="0"/> (100원 단위로 사용가능합니다.)</td>
+					<td>
+					 <br>
+					</td>
+			    </tr>
+			    <tr class="dot_line" >
+					<td class="fixed_join">전액 사용</td>
+					<td><input type="checkbox" id="useAllPoint" name="useAllPoint" value="${orderer.point }"/></td>
+					<td>
+					 <br>
+					</td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+  	<div class="clear"></div>
+	<br>
+	<br>
+	<h1>4.결제정보</h1>
 	<div class="detail_table">
 		<table>
 			<tbody>

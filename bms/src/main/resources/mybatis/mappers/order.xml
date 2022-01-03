@@ -63,4 +63,12 @@
            		PAY_ORDER_TIME DESC
 	</select>
 	
+	<insert id="insertPoint" parameterType="int">
+	INSERT INTO
+			T_SHOPPING_ORDER(ADD_POINT)
+	VALUES
+			(GOODS_SALES_PRICE * 0.1)
+	WHERE
+			MEMBER_ID = #{memberId}
+	</insert>
 </mapper>

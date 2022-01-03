@@ -92,6 +92,16 @@
 	    </c:choose> 	    
 		</tbody>
 	</table>
+	
+	<br><br><br>	
+	<h1>나의 포인트</h1>
+	<table class="list_view">
+	  <tbody  align="center">
+	 <tr>
+	 	<td><strong>${memberInfo.point }</strong></td>  <!--  왜 한칸 빈칸으로 만들어야하지? -->
+	 </tr>
+	 </tbody>
+	</table>
 
 	<br><br><br>	
 	<h1>나의 정보
