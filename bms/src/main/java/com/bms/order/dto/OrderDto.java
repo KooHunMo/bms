@@ -32,7 +32,6 @@ public class OrderDto {
 	private String cardComName;
 	private String cardPayMonth;
 	private String deliveryState;
-	
 	public int getOrderId() {
 		return orderId;
 	}

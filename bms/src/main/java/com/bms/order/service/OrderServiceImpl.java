@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bms.goods.dto.GoodsDto;
+import com.bms.member.dto.MemberDto;
 import com.bms.order.dao.OrderDao;
 import com.bms.order.dto.OrderDto;
 
@@ -31,4 +33,8 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findMyOrder(orderId);
 	}
 
+	public void addPoint(MemberDto memberDto) throws Exception {
+		orderDao.addPoint(memberDto);
+		
+	}
 }

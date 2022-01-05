@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bms.goods.dto.GoodsDto;
 import com.bms.member.dto.MemberDto;
 import com.bms.order.dto.OrderDto;
 import com.bms.order.service.OrderService;
@@ -47,14 +48,19 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/payToOrderGoods.do" , method = RequestMethod.POST)
-	public ResponseEntity<Object> payToOrderGoods(@RequestParam Map<String, String> receiverMap , HttpServletRequest request) throws Exception{
-		
+	public ResponseEntity<Object> payToOrderGoods(@RequestParam Map<String, String> receiverMap ,  @RequestParam("point") int point , HttpServletRequest request) throws Exception{
+		System.out.println("==========================");									   // 
+		System.out.println(receiverMap);
 		HttpSession session = request.getSession();
 		Map<String,Object> goodsInfo= (Map<String,Object>)session.getAttribute("goodsInfo");
 		MemberDto memberDto = (MemberDto)session.getAttribute("orderer");
+		
+		
 		String memberId =  "";
 		if (memberDto != null) 
 			memberId = memberDto.getMemberId();
+		
+		System.out.println("memberId : " + memberId);
 		
 		String ordererName = "";
 		if (memberDto != null)
@@ -63,7 +69,10 @@ public class OrderController {
 		String ordererHp = memberDto.getHp1() + "-" + memberDto.getHp2() + "-" + memberDto.getHp3();
 		
 		
-		OrderDto orderDto = new OrderDto();;
+		String memberPoint = Integer.toString(point);
+		memberDto.setMemberPoint(memberPoint);
+		
+		OrderDto orderDto = new OrderDto();
 		orderDto.setMemberId(memberId);
 		orderDto.setOrdererName(ordererName);
 		orderDto.setGoodsId(Integer.parseInt((String)(goodsInfo.get("goodsId"))));
@@ -90,6 +99,7 @@ public class OrderController {
 		orderDto.setPayOrdererHpNum(receiverMap.get("payOrdererHpNum"));	
 		orderDto.setOrdererHp(ordererHp);	
 		
+		orderService.addPoint(memberDto);
 	    orderService.addNewOrder(orderDto);
 		
 		return new ResponseEntity<Object>(HttpStatus.OK);
