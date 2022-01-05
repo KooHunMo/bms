@@ -9,6 +9,7 @@ public class MyPageDto {
 	private String beginDate;
 	private String endDate;
 	
+	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -27,5 +28,4 @@ public class MyPageDto {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
 }

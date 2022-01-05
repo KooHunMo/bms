@@ -185,5 +185,13 @@
 	   WHERE 
 	   			ORDER_ID = #{orderId}
 	</update>
-		
+	
+	<select id="viewPoint" resultType="int" parameterType="int">
+	SELECT 
+			MEMBER_POINT
+	FROM
+			T_SHOPPING_MEMBER
+	WHERE
+			MEMBER_ID = #{memberId}
+	</select>
 </mapper>

@@ -43,5 +43,5 @@ public class MyPageServiceImpl implements MyPageService {
 	public MemberDto myDetailInfo(String memberId) throws Exception{
 		return myPageDao.selectMyDetailInfo(memberId);
 	}
-	
+
 }

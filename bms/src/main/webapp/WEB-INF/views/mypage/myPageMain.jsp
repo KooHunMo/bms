@@ -98,7 +98,8 @@
 	<table class="list_view">
 	  <tbody  align="center">
 	 <tr>
-	 	<td><strong>${memberInfo.point }</strong></td>  <!--  왜 한칸 빈칸으로 만들어야하지? -->
+	 	<td width="143">사용 가능 포인트</td>
+	 	<td><strong>${memberInfo.memberPoint}</strong></td>  
 	 </tr>
 	 </tbody>
 	</table>

@@ -14,5 +14,4 @@ public interface MyPageDao {
 	public void updateMyInfo(Map<String,String> memberMap) throws Exception;
 	public MemberDto selectMyDetailInfo(String memberId) throws Exception;
 	public void updateMyOrderCancel(String orderId) throws Exception;
-
 }

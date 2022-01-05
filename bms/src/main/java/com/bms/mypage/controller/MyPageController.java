@@ -46,7 +46,7 @@ public class MyPageController  {
 		
 		ModelAndView mv = new ModelAndView("/mypage/myPageMain");	//사용 변수가 "/mypage/myPageMain"인건가??????
 		MemberDto memberDto = (MemberDto)session.getAttribute("memberInfo");	//세션 반환형: Object
-		
+		// MemberDto의 이름을 "memberInfo"로 설정
 		String memberId = "";
 		if (memberDto != null) 	memberId = memberDto.getMemberId();
 		else 					mv.setViewName("redirect:/main/main.do");
