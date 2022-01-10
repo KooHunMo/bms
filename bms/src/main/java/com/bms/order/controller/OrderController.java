@@ -69,7 +69,7 @@ public class OrderController {
 		String ordererHp = memberDto.getHp1() + "-" + memberDto.getHp2() + "-" + memberDto.getHp3();
 		
 		
-		String memberPoint = Integer.toString(point);
+		int memberPoint = point;
 		memberDto.setMemberPoint(memberPoint);
 		
 		OrderDto orderDto = new OrderDto();

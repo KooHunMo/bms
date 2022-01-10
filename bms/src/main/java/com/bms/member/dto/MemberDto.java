@@ -31,7 +31,7 @@ public class MemberDto {
 	private String namujiAddress;
 	private Date joinDate;
 	private String delYn;
-	private String memberPoint;
+	private int memberPoint;
 	
 	public String getMemberId() {
 		return memberId;
@@ -177,10 +177,10 @@ public class MemberDto {
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
 	}
-	public String getMemberPoint() {
+	public int getMemberPoint() {
 		return memberPoint;
 	}
-	public void setMemberPoint(String memberPoint) {
+	public void setMemberPoint(int memberPoint) {
 		this.memberPoint = memberPoint;
 	}
 	

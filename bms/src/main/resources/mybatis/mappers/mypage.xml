@@ -186,7 +186,7 @@
 	   			ORDER_ID = #{orderId}
 	</update>
 	
-	<select id="viewPoint" resultType="int" parameterType="int">
+	<select id="viewPoint" resultType="int" parameterType="String">
 	SELECT 
 			MEMBER_POINT
 	FROM
@@ -194,4 +194,5 @@
 	WHERE
 			MEMBER_ID = #{memberId}
 	</select>
+	
 </mapper>

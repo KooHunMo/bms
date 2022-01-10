@@ -14,4 +14,5 @@ public interface MyPageService{
 	public MemberDto modifyMyInfo(Map<String,String> memberMap) throws Exception;
 	public void cancelOrder(String orderId) throws Exception;
 	public MemberDto myDetailInfo(String memberId) throws Exception;
+	public int viewPoint(String memberId) throws Exception;
 }

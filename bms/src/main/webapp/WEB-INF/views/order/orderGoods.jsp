@@ -87,7 +87,7 @@
 		    cardComName     : $("#cardComName").val(),
 		    cardPayMonth    : $("#cardPayMonth").val(),
 		    payOrdererHpNum : payOrdererHpNum,
-		    point			: $("#orderGoodsQty").val() * 750,
+		    point			: $("#orderGoodsQty").val() * 1500,
 		}
 		
 		$.ajax({
@@ -98,18 +98,6 @@
 			success : function(){
 				alert("주문이 성공적으로 완료 되었습니다.");
 				location.href = "${contextPath}/mypage/listMyOrderHistory.do";// 주문 확인 controller
-				
-				 $.ajax({
-					type : "POST",
-					url  : "${contextPath}/order/payToOrderGoods.do", //결제 controller
-					async : false,
-					data : datas ,
-					success : function(){
-						
-					}
-				});
-				
-				
 			}
 		});
 		
@@ -296,7 +284,7 @@
 				<tbody>
 					<tr class="dot_line" >
 						<td class="fixed_join">내 포인트</td>
-						<td><input type="text" id="myPoint" name="myPoint" value=""  readonly /></td>
+						<td><strong>${orderer.memberPoint }</strong></td>
 						<td>
 						 <br>
 						</td>

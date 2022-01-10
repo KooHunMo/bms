@@ -96,7 +96,7 @@
 	<br><br><br>	
 	<h1>나의 포인트</h1>
 	<table class="list_view">
-	  <tbody  align="center">
+	  <tbody align="center">
 	 <tr>
 	 	<td width="143">사용 가능 포인트</td>
 	 	<td><strong>${memberInfo.memberPoint}</strong></td>  

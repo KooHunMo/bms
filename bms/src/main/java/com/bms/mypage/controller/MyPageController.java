@@ -37,7 +37,8 @@ public class MyPageController  {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value="/myPageMain.do" , method = RequestMethod.GET)
-	public ModelAndView myPageMain(@RequestParam(required = false , value="message") String message, HttpServletRequest request)  throws Exception {
+	public ModelAndView myPageMain(@RequestParam(required = false , value="message") String message, 
+									HttpServletRequest request)  throws Exception {
 												//required 속성을 추가하면 해당 필드가 리퀘스트에 존재하지 않아도 예외가 발생하지 않는다.
 		HttpSession session = request.getSession();
 		
@@ -53,7 +54,6 @@ public class MyPageController  {
 		
 		mv.addObject("message" , message);
 		mv.addObject("myOrderList" , myPageService.listMyOrderGoods(memberId));
-
 		return mv;
 		
 	}

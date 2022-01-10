@@ -45,4 +45,10 @@ public class MyPageDaoImpl implements MyPageDao {
 	public void updateMyOrderCancel(String orderId) throws Exception{
 		sqlSession.update("mapper.mypage.updateMyOrderCancel" , orderId);
 	}
+
+
+	public int viewPoint(String memberId) throws Exception {
+		
+		return sqlSession.selectOne("mapper.mypage.viewPoint" , memberId);
+	}
 }
