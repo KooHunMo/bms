@@ -37,4 +37,9 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.addPoint(memberDto);
 		
 	}
+
+	public void useAllPoint(MemberDto memberDto) throws Exception {
+		orderDao.useAllPoint(memberDto);
+		
+	}
 }

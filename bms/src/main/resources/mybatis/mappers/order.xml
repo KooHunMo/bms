@@ -63,11 +63,20 @@
            		PAY_ORDER_TIME DESC
 	</select>
 	
-	 <update id="addPoint" parameterType="MemberDto">
+	 <update id="updatePoint" parameterType="MemberDto">
 	UPDATE
 			T_SHOPPING_MEMBER
 	SET
-			MEMBER_POINT = MEMBER_POINT + #{memberPoint}
+			MEMBER_POINT = MEMBER_POINT + #{ADD_POINT}
+	WHERE
+			MEMBER_ID = #{memberId}
+	</update>
+	
+	<update id="useAllPoint" parameterType="MemberDto">
+	UPDATE
+			T_SHOPPING_MEMBER
+	SET
+			GOODS_SALES_PRICE = GOODS_SALES_PRICE - #{memberPoint}
 	WHERE
 			MEMBER_ID = #{memberId}
 	</update>

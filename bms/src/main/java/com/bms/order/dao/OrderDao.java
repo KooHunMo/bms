@@ -13,4 +13,5 @@ public interface OrderDao {
 	public void insertNewOrder(OrderDto orderDto) throws Exception;
 	public OrderDto findMyOrder(String orderId) throws Exception;
 	public void addPoint(MemberDto memberDto) throws Exception;
+	public void useAllPoint(MemberDto memberDto) throws Exception;
 }

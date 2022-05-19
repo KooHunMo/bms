@@ -87,7 +87,7 @@
 		    cardComName     : $("#cardComName").val(),
 		    cardPayMonth    : $("#cardPayMonth").val(),
 		    payOrdererHpNum : payOrdererHpNum,
-		    point			: $("#orderGoodsQty").val() * 1500,
+		    addPoint		: $("#addPoint").val(),
 		}
 		
 		$.ajax({
@@ -102,6 +102,21 @@
 		});
 		
 	}
+	
+//	function useAllPoint(){
+		
+	//	$.ajax({
+		//	type : "POST",
+		//	url  : "${contextPath}/order/useAllPoint.do",
+		//	async : false,
+		//	data : datas ,
+		//	success : function(){
+		//		alert("포인트가 전액 사용됩니다.");
+		//		location.href = "${contextPath}/mypage/listMyOrderHistory.do";// 주문 확인 controller
+		//	}
+	//	});
+		
+	//}
 	</script>
 	</head>
 	<body>
@@ -132,6 +147,8 @@
 					<td>
 					  <h2>${goodsInfo.orderGoodsQty }개</h2>
 					    <input type="hidden" id="orderGoodsQty" name="orderGoodsQty" value="${goodsInfo.orderGoodsQty}" />
+					    <input type="hidden" id="memberPoint" name="memberPoint" value="${orderer.memberPoint }" />
+						<input type="hidden" id="addPoint" name="addPoint" value="${1500 * goodsInfo.orderGoodsQty}" />
 					</td>
 					<td><h2>${goodsInfo.goodsSalesPrice}원 (10% 할인)</h2></td>
 					<td><h2>${goodsInfo.goodsDeliveryPrice}원 </h2></td>

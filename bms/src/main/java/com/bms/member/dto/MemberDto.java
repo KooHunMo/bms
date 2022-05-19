@@ -32,6 +32,7 @@ public class MemberDto {
 	private Date joinDate;
 	private String delYn;
 	private int memberPoint;
+	private int addPoint;
 	
 	public String getMemberId() {
 		return memberId;
@@ -182,6 +183,12 @@ public class MemberDto {
 	}
 	public void setMemberPoint(int memberPoint) {
 		this.memberPoint = memberPoint;
+	}
+	public int getAddPoint() {
+		return addPoint;
+	}
+	public void setAddPoint(int addPoint) {
+		this.addPoint = addPoint;
 	}
 	
 	

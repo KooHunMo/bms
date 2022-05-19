@@ -13,4 +13,5 @@ public interface OrderService {
 	public void addNewOrder(OrderDto orderDto) throws Exception;
 	public OrderDto findMyOrder(String orderId) throws Exception;
 	public void addPoint(MemberDto memberDto) throws Exception;
+	public void useAllPoint(MemberDto memberDto) throws Exception;
 }

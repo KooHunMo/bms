@@ -30,7 +30,12 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	public void addPoint(MemberDto memberDto) throws Exception {
-	sqlSession.insert("mapper.order.addPoint", memberDto);
+	sqlSession.update("mapper.order.updatePoint", memberDto);
+		
+	}
+
+	public void useAllPoint(MemberDto memberDto) throws Exception {
+		sqlSession.update("mapper.order.useAllPoint", memberDto);
 		
 	}
 	

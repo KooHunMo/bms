@@ -48,29 +48,21 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/payToOrderGoods.do" , method = RequestMethod.POST)
-	public ResponseEntity<Object> payToOrderGoods(@RequestParam Map<String, String> receiverMap ,  @RequestParam("point") int point , HttpServletRequest request) throws Exception{
-		System.out.println("==========================");									   // 
-		System.out.println(receiverMap);
+	public ResponseEntity<Object> payToOrderGoods(@RequestParam Map<String, String> receiverMap , @RequestParam("addPoint") int addPoint, HttpServletRequest request) throws Exception{	
 		HttpSession session = request.getSession();
 		Map<String,Object> goodsInfo= (Map<String,Object>)session.getAttribute("goodsInfo");
 		MemberDto memberDto = (MemberDto)session.getAttribute("orderer");
-		
+		memberDto.setAddPoint(addPoint);// 왜 안되는데 씨발년아
 		
 		String memberId =  "";
 		if (memberDto != null) 
 			memberId = memberDto.getMemberId();
-		
-		System.out.println("memberId : " + memberId);
 		
 		String ordererName = "";
 		if (memberDto != null)
 			ordererName = memberDto.getMemberName();
 		
 		String ordererHp = memberDto.getHp1() + "-" + memberDto.getHp2() + "-" + memberDto.getHp3();
-		
-		
-		int memberPoint = point;
-		memberDto.setMemberPoint(memberPoint);
 		
 		OrderDto orderDto = new OrderDto();
 		orderDto.setMemberId(memberId);
